@@ -7,7 +7,6 @@ import ElninoLogo from "../assets/elnino-logo.jsx";
 import ContractPreviewPanel from "../components/ContractPreviewPanel.jsx";
 
 function CreateContractPage() {
-    // Направи On click да излизат промените
     const [contractType,setContractType] = useState("Renewable");
     const [contract, setContract] = useState({
         employeeName:"Jane Doe",
