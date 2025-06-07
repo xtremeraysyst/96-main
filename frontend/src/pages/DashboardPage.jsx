@@ -61,7 +61,7 @@ function DashboardPage() {
 
             <main className="flex flex-1 overflow-hidden">
                 <div className="hidden lg:flex lg:flex-shrink-0">
-                    <div className="w-20">
+                    <div className="w-30">
                         <Sidebar />
                     </div>
                 </div>
