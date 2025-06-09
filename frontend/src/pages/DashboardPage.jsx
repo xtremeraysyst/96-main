@@ -40,7 +40,7 @@ function DashboardPage() {
     return (
         <div className="flex flex-col min-h-screen bg-gray-50">
             <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-30">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="w-full px-2 sm:px-4 lg:px-6">
                     <div className="flex justify-between items-center h-18">
                         <div className="flex items-center">
                             <div className="transform scale-55 origin-left">
@@ -61,7 +61,7 @@ function DashboardPage() {
 
             <main className="flex flex-1 overflow-hidden">
                 <div className="hidden lg:flex lg:flex-shrink-0">
-                    <div className="w-20">
+                    <div className="w-64">
                         <Sidebar />
                     </div>
                 </div>
