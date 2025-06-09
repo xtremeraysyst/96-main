@@ -1,3 +1,6 @@
+import React from 'react';
+import { useNavigate } from 'react-router';
+import BackToMainButton from '../components/BackToMainButton';
 import ContractTypeSelect from "../components/ContractTypeSelect.jsx";
 import RenewableEmployeeContract from "../components/RenewableEmployeeContract.jsx";
 import {useState} from "react";
@@ -25,8 +28,8 @@ function CreateContractPage() {
         dateSigned:"2025-05-27",
         activities:"Front end",
         contractDuration:6
-
     });
+    
     const handleChange = (e) => {
         const { name, value } = e.target;
         const updatedContract = {
@@ -70,21 +73,36 @@ function CreateContractPage() {
                 handleChange={handleChange}
             />;
     }
+    
     return (
-        <div className="flex flex-col bg-gray-200 w-full" >
-            <div className={"h-1/5 text-5xl py-5 "}>
-                <ElninoLogo/>
+        <div className="min-h-screen bg-gray-50 p-4">
+            {/* Back button */}
+            <div className="mb-6">
+                <BackToMainButton />
             </div>
-            <div className={"h-1/5 flex items-center justify-center py-5 mr-96"}>
-                <ContractTypeSelect onChange={(contract) => setContractType(contract)}/>
+            
+            <div className="bg-gray-200 w-full rounded-lg p-6">
+                {/* Logo section */}
+                <div className="mb-8">
+                    <div className="text-5xl">
+                        <ElninoLogo/>
+                    </div>
+                </div>
+                
+                {/* Contract type selector */}
+                <div className="mb-8 flex justify-center">
+                    <ContractTypeSelect onChange={(contract) => setContractType(contract)}/>
+                </div>
+                
+                {/* Main content area */}
+                <div className="flex flex-col lg:flex-row gap-8 max-w-7xl mx-auto">
+                    <div className="flex-1">{contractComponent}</div>
+                    <div className="w-full lg:w-80">
+                        <ContractPreviewPanel contract={contract} />
+                    </div>
+                </div>
             </div>
-      <div className="flex flex-col lg:flex-row gap-8 max-w-7xl mx-auto">
-        <div className="flex-1">{contractComponent}</div>
-        <div className="w-full lg:w-80">
-          <ContractPreviewPanel contract={contract} />
         </div>
-      </div>
-    </div>
     );
 }
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import FormDataField from "../components/FormField";
+import BackToMainButton from "../components/BackToMainButton";
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -39,6 +40,7 @@ function RegisterPage() {
 
   return (
     <div className="w-full">
+      <BackToMainButton />
       <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Register</h1>
 
       <form
@@ -76,7 +78,7 @@ function RegisterPage() {
         </button>
       </form>
     </div>
-);
+  );
 }
 
 export default RegisterPage;

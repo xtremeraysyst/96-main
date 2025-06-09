@@ -1,3 +1,6 @@
+import React from 'react';
+import { useNavigate } from 'react-router';
+import BackToMainButton from '../components/BackToMainButton';
 import FormDataField from "../components/FormField";
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -225,6 +228,22 @@ function CandidateDetailPage() {
 
 
   );
+}
+
+function CandidateDetailPage() {
+    // ... existing code ...
+
+    return (
+        <div className="min-h-screen bg-gray-50 p-4">
+            {/* Back button */}
+            <div className="mb-6">
+                <BackToMainButton />
+            </div>
+            
+            {/* Rest of your existing content */}
+            {/* ... existing code ... */}
+        </div>
+    );
 }
 
 export default CandidateDetailPage;
