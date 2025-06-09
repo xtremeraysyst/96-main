@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import FormDataField from "../components/FormField";
 import { useNavigate } from "react-router";
-import BackToMainButton from "../components/BackToMainButton";
-import { prodURL } from "../utils/urls.js";
 
 function LoginPage() {
     const [user, setUser] = useState({
@@ -53,12 +51,9 @@ function LoginPage() {
 
 
     function handleChange(e) {
-        // console.log(e.target.id);
         setUser({ ...user, [e.target.id]: e.target.value });
-        // console.log(user);
     }
     function isValidEmail() {
-        //Regex to check a single string that has @, has no spaces and have a .
         const regex = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
         return regex.test(user.email);
     }
@@ -71,11 +66,6 @@ function LoginPage() {
 
     return (
         <main className="w-full">
-            {/* Back button */}
-            <div className="mb-4">
-                <BackToMainButton className="text-sm" />
-            </div>
-            
             <h1 className={"text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center"}>Login</h1>
             <form className="flex flex-col gap-4 sm:gap-6 w-full" onSubmit={(e) => handleSubmit(e)}>
                 <FormDataField type={"email"} id="email" value={user.email} handleChange={(e) => handleChange(e)} />

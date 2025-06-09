@@ -21,7 +21,7 @@ const RenewableEmployeeContract = ({
                                        contractDuration
                                            }) => {
     return (
-        <div className="prose mx-auto p-6 max-w-4xl text-justify bg-white">
+        <div className="prose mx-auto p-6 max-w-4xl lg:max-w-none text-justify bg-white">
             <h1 className="text-center font-bold text-xl mb-4">RENEWABLE EMPLOYEE CONTRACT</h1>
 
             <p><strong>Undersigned:</strong></p>
@@ -146,18 +146,22 @@ const RenewableEmployeeContract = ({
                 on <HrField value={dateSigned} handleChange={handleChange} id={"dateSigned"} type={"date"}/>.
             </p>
 
-            <div className="mt-8">
-                <div className="mb-8">
+            <div className="mt-8 flex flex-col lg:flex-row lg:justify-between lg:gap-8">
+                <div className="mb-8 lg:mb-0 lg:flex-1">
                     <p>(signature employer)</p>
                     <p>El Niño BV</p>
                     <p>M.A. Groeneveld</p>
                     <p>Director</p>
-                    <SignaturePad/>
+                    <div className="mt-4">
+                        <SignaturePad/>
+                    </div>
                 </div>
-                <div>
+                <div className="lg:flex-1">
                     <p>(signature employee)</p>
                     <p>{initials} {lastName}</p>
-                    <div className={"mt-4"}>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <div className="mt-4">
                         <SignaturePad isOpen={false}/>
                     </div>
                 </div>

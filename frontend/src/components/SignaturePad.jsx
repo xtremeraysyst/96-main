@@ -1,14 +1,32 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SignatureCanvas from "react-signature-canvas";
 
 const SignaturePad = ({ isOpen = true }) => {
   const sigCanvas = useRef(null);
+  const containerRef = useRef(null);
+  const [canvasSize, setCanvasSize] = useState({ width: 300, height: 200 });
 
   useEffect(() => {
     if (!isOpen && sigCanvas.current) {
       sigCanvas.current.off();
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    const updateCanvasSize = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth - 32;
+        const width = Math.min(Math.max(containerWidth, 250), 600); 
+        const height = Math.min(width * 0.6, 300);
+        setCanvasSize({ width, height });
+      }
+    };
+
+    updateCanvasSize();
+    window.addEventListener('resize', updateCanvasSize);
+    
+    return () => window.removeEventListener('resize', updateCanvasSize);
+  }, []);
 
   const clear = () => {
     sigCanvas.current?.clear();
@@ -24,18 +42,23 @@ const SignaturePad = ({ isOpen = true }) => {
   };
 
   return (
-    <div className="w-full sm:w-[280px] p-4 bg-white rounded-xl flex flex-col items-center space-y-4">
+    <div 
+      ref={containerRef}
+      className="w-full max-w-2xl mx-auto p-4 bg-white rounded-xl flex flex-col items-center space-y-4"
+    >
       <h3 className="text-md font-semibold text-gray-700">Sign below</h3>
 
-      <SignatureCanvas
-        ref={sigCanvas}
-        penColor="black"
-        canvasProps={{
-          width: 300,
-          height: 300,
-          className: "border border-gray-300 rounded-md shadow-sm bg-gray-50",
-        }}
-      />
+      <div className="w-full flex justify-center">
+        <SignatureCanvas
+          ref={sigCanvas}
+          penColor="black"
+          canvasProps={{
+            width: canvasSize.width,
+            height: canvasSize.height,
+            className: "border border-gray-300 rounded-md shadow-sm bg-gray-50",
+          }}
+        />
+      </div>
 
       {isOpen && (
         <div className="flex gap-4">

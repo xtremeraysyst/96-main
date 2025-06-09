@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import BackToMainButton from '../components/BackToMainButton';
 import FormDataField from "../components/FormField";
-import { useState } from "react";
-import { useNavigate } from "react-router";
 import ElninoLogo from "../assets/elnino-logo.jsx";
 
 function CandidateDetailPage() {
@@ -111,139 +109,121 @@ function CandidateDetailPage() {
   }
 
   return (
-<main className="px-4 py-6">
-  <ElninoLogo/>
-  <h1 className="text-4xl font-bold mb-8 text-center">Candidate Details</h1>
-
-  <form
-    onSubmit={handleSubmit}
-    className="mx-auto flex flex-col gap-8 w-full max-w-4xl"
-  >
-    {/* Personal Info */}
-    <section className="rounded-2xl bg-white p-6 shadow-md border">
-      <h2 className="text-xl font-semibold mb-4 text-gray-700">Personal Information</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <FormDataField type="number" id="bsn" value={user.bsn} handleChange={handleChange} />
-        <FormDataField type="text" id="initials" value={user.initials} handleChange={handleChange} />
-        <FormDataField type="text" id="full_first_name" value={user.full_first_name} handleChange={handleChange} />
-        <FormDataField type="date" id="date_of_birth" value={user.date_of_birth} handleChange={handleChange} />
-
-        {/* Prefix */}
-        <div className="flex flex-col">
-          <label htmlFor="prefix" className="mb-1 font-medium">Prefix</label>
-          <select
-            id="prefix"
-            value={user.prefix}
-            onChange={handleChange}
-            className="rounded border border-gray-300 bg-white p-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-          >
-            <option value="">Select prefix</option>
-            <option value="None">None</option>
-            <option value="Mr.">Mr.</option>
-            <option value="Mrs.">Mrs.</option>
-            <option value="Ms.">Ms.</option>
-            <option value="Dr.">Dr.</option>
-          </select>
-        </div>
-
-        {/* Gender */}
-        <div className="flex flex-col">
-          <label htmlFor="gender" className="mb-1 font-medium">Gender</label>
-          <select
-            id="gender"
-            value={user.gender}
-            onChange={handleChange}
-            className="rounded border border-gray-300 bg-white p-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-          >
-            <option value="">Select gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
+    <div className="min-h-screen bg-gray-50 p-4">
+      {/* Back button */}
+      <div className="mb-6">
+        <BackToMainButton />
       </div>
-    </section>
+      
+      <main className="px-4 py-6">
+        <ElninoLogo/>
+        <h1 className="text-4xl font-bold mb-8 text-center">Candidate Details</h1>
 
-    {/* Address Info */}
-    <section className="rounded-2xl bg-white p-6 shadow-md border">
-      <h2 className="text-xl font-semibold mb-4 text-gray-700">Address</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <FormDataField type="text" id="street" value={user.street} handleChange={handleChange} />
-        <FormDataField type="text" id="house_number" value={user.house_number} handleChange={handleChange} />
-        <FormDataField type="text" id="postal_code" value={user.postal_code} handleChange={handleChange} />
-        <FormDataField type="text" id="city" value={user.city} handleChange={handleChange} />
-        <FormDataField type="text" id="country" value={user.country} handleChange={handleChange} />
-      </div>
-    </section>
+        <form
+          onSubmit={handleSubmit}
+          className="mx-auto flex flex-col gap-8 w-full max-w-4xl"
+        >
+          {/* Personal Info */}
+          <section className="rounded-2xl bg-white p-6 shadow-md border">
+            <h2 className="text-xl font-semibold mb-4 text-gray-700">Personal Information</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormDataField type="number" id="bsn" value={user.bsn} handleChange={handleChange} />
+              <FormDataField type="text" id="initials" value={user.initials} handleChange={handleChange} />
+              <FormDataField type="text" id="full_first_name" value={user.full_first_name} handleChange={handleChange} />
+              <FormDataField type="date" id="date_of_birth" value={user.date_of_birth} handleChange={handleChange} />
 
-    {/* National Info */}
-    <section className="rounded-2xl bg-white p-6 shadow-md border">
-      <h2 className="text-xl font-semibold mb-4 text-gray-700">Nationality & Birth</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <FormDataField type="text" id="birth_country" value={user.birth_country} handleChange={handleChange} />
-        <FormDataField type="text" id="nationality" value={user.nationality} handleChange={handleChange} />
+              {/* Prefix */}
+              <div className="flex flex-col">
+                <label htmlFor="prefix" className="mb-1 font-medium">Prefix</label>
+                <select
+                  id="prefix"
+                  value={user.prefix}
+                  onChange={handleChange}
+                  className="rounded border border-gray-300 bg-white p-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                >
+                  <option value="">Select prefix</option>
+                  <option value="None">None</option>
+                  <option value="Mr.">Mr.</option>
+                  <option value="Mrs.">Mrs.</option>
+                  <option value="Ms.">Ms.</option>
+                  <option value="Dr.">Dr.</option>
+                </select>
+              </div>
 
-        {/* Marital Status */}
-        <div className="flex flex-col">
-          <label htmlFor="marital_status" className="mb-1 font-medium">Marital Status</label>
-          <select
-            id="marital_status"
-            value={user.marital_status}
-            onChange={handleChange}
-            className="rounded border border-gray-300 bg-white p-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-          >
-            <option value="">Select status</option>
-            <option value="Single">Single</option>
-            <option value="Married">Married</option>
-            <option value="Divorced">Divorced</option>
-            <option value="Widowed">Widowed</option>
-          </select>
-        </div>
-      </div>
-    </section>
+              {/* Gender */}
+              <div className="flex flex-col">
+                <label htmlFor="gender" className="mb-1 font-medium">Gender</label>
+                <select
+                  id="gender"
+                  value={user.gender}
+                  onChange={handleChange}
+                  className="rounded border border-gray-300 bg-white p-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                >
+                  <option value="">Select gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
 
-    {/* Banking Info */}
-    <section className="rounded-2xl bg-white p-6 shadow-md border">
-      <h2 className="text-xl font-semibold mb-4 text-gray-700">Bank Information</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <FormDataField type="text" id="bank_account_name" value={user.bank_account_name} handleChange={handleChange} />
-        <FormDataField type="text" id="bank_account_number" value={user.bank_account_number} handleChange={handleChange} />
-      </div>
-    </section>
-
-    {/* Submit */}
-    <div className="flex flex-col items-center">
-      {errorMessage && (
-        <p className="text-sm text-red-600 mb-2">{errorMessage}</p>
-      )}
-      <button
-        type="submit"
-        className="rounded-xl bg-pink-500 px-8 py-2 text-white shadow hover:bg-pink-600 transition"
-      >
-        Submit
-      </button>
-    </div>
-  </form>
-</main>
-
-
-  );
-}
-
-function CandidateDetailPage() {
-    // ... existing code ...
-
-    return (
-        <div className="min-h-screen bg-gray-50 p-4">
-            {/* Back button */}
-            <div className="mb-6">
-                <BackToMainButton />
+              {/* Marital Status */}
+              <div className="flex flex-col">
+                <label htmlFor="marital_status" className="mb-1 font-medium">Marital Status</label>
+                <select
+                  id="marital_status"
+                  value={user.marital_status}
+                  onChange={handleChange}
+                  className="rounded border border-gray-300 bg-white p-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                >
+                  <option value="">Select status</option>
+                  <option value="Single">Single</option>
+                  <option value="Married">Married</option>
+                  <option value="Divorced">Divorced</option>
+                  <option value="Widowed">Widowed</option>
+                </select>
+              </div>
             </div>
-            
-            {/* Rest of your existing content */}
-            {/* ... existing code ... */}
-        </div>
-    );
+          </section>
+
+          {/* Address Info */}
+          <section className="rounded-2xl bg-white p-6 shadow-md border">
+            <h2 className="text-xl font-semibold mb-4 text-gray-700">Address Information</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormDataField type="text" id="postal_code" value={user.postal_code} handleChange={handleChange} />
+              <FormDataField type="text" id="house_number" value={user.house_number} handleChange={handleChange} />
+              <FormDataField type="text" id="street" value={user.street} handleChange={handleChange} />
+              <FormDataField type="text" id="city" value={user.city} handleChange={handleChange} />
+              <FormDataField type="text" id="country" value={user.country} handleChange={handleChange} />
+              <FormDataField type="text" id="birth_country" value={user.birth_country} handleChange={handleChange} />
+              <FormDataField type="text" id="nationality" value={user.nationality} handleChange={handleChange} />
+            </div>
+          </section>
+
+          {/* Banking Info */}
+          <section className="rounded-2xl bg-white p-6 shadow-md border">
+            <h2 className="text-xl font-semibold mb-4 text-gray-700">Bank Information</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormDataField type="text" id="bank_account_name" value={user.bank_account_name} handleChange={handleChange} />
+              <FormDataField type="text" id="bank_account_number" value={user.bank_account_number} handleChange={handleChange} />
+            </div>
+          </section>
+
+          {/* Submit */}
+          <div className="flex flex-col items-center">
+            {errorMessage && (
+              <p className="text-sm text-red-600 mb-2">{errorMessage}</p>
+            )}
+            <button
+              type="submit"
+              className="rounded-xl bg-pink-500 px-8 py-2 text-white shadow hover:bg-pink-600 transition"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </main>
+    </div>
+  );
 }
 
 export default CandidateDetailPage;

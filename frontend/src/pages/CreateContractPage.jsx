@@ -75,33 +75,28 @@ function CreateContractPage() {
     }
     
     return (
-        <div className="min-h-screen bg-gray-50 p-4">
-            {/* Back button */}
-            <div className="mb-6">
-                <BackToMainButton />
-            </div>
+        <div className="min-h-screen bg-gray-50 p-4 lg:p-8">
+            <BackToMainButton />
             
-            <div className="bg-gray-200 w-full rounded-lg p-6">
-                {/* Logo section */}
+            <div className="bg-gray-200 w-full rounded-lg p-6 lg:p-12">
                 <div className="mb-8">
                     <div className="text-5xl">
                         <ElninoLogo/>
                     </div>
                 </div>
                 
-                {/* Contract type selector */}
-                <div className="mb-8 flex justify-center">
+                <div className="mb-8">
                     <ContractTypeSelect onChange={(contract) => setContractType(contract)}/>
                 </div>
                 
-                {/* Contract Preview below the selector */}
-                <div className="mb-8 max-w-md mx-auto">
-                    <ContractPreviewPanel contract={contract} />
-                </div>
-                
-                {/* Main content area - contract form */}
-                <div className="max-w-7xl mx-auto">
-                    <div className="flex-1">{contractComponent}</div>
+                <div className="flex flex-col lg:flex-row lg:gap-8">
+                    <div className="flex-1 order-2 lg:order-1">
+                        {contractComponent}
+                    </div>
+                    
+                    <div className="mb-8 lg:mb-0 order-1 lg:order-2 lg:w-80 lg:flex-shrink-0">
+                        <ContractPreviewPanel contract={contract} />
+                    </div>
                 </div>
             </div>
         </div>

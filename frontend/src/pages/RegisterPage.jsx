@@ -40,7 +40,8 @@ function RegisterPage() {
 
   return (
     <div className="w-full">
-      <BackToMainButton />
+      <BackToMainButton className="fixed top-4 left-4 z-50" />
+      
       <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Register</h1>
 
       <form
