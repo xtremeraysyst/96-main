@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import { users as allUsers } from "../utils/users";
 import Sidebar from "../components/Sidebar";
 import ElninoLogo from "../assets/elnino-logo";
@@ -8,6 +9,7 @@ import UserStatus from "../components/UserStatus";
 import UserListHeader from "../components/UserListHeader";
 
 function DashboardPage() {
+    const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState(localStorage.getItem("search") || "");
     const [statusFilter, setStatusFilter] = useState(localStorage.getItem("statusFilter") || "All");
     const [currentPage, setCurrentPage] = useState(parseInt(localStorage.getItem("currentPage")) || 1);
@@ -48,11 +50,29 @@ function DashboardPage() {
                             </div>
                         </div>
                         <div className="flex items-center space-x-4">
-                            <div className="text-sm text-gray-500">
+                            {/* Mobile menu buttons - visible only on small screens */}
+                            <div className="flex lg:hidden space-x-2">
+                                <button
+                                    onClick={() => navigate("/register")}
+                                    className="px-3 py-1 bg-indigo-600 text-white rounded text-sm hover:bg-indigo-700 transition"
+                                >
+                                    + User
+                                </button>
+                            </div>
+                            <div className="hidden sm:block text-sm text-gray-500">
                                 Welcome back, Admin
                             </div>
                             <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
                                 <span className="text-white text-sm font-medium">A</span>
+                            </div>
+                            {/* Logout button after profile pic on mobile */}
+                            <div className="lg:hidden">
+                                <button
+                                    onClick={() => navigate("/login")}
+                                    className="px-3 py-1 bg-gray-100 text-gray-800 rounded text-sm hover:bg-gray-200 transition"
+                                >
+                                    Logout
+                                </button>
                             </div>
                         </div>
                     </div>

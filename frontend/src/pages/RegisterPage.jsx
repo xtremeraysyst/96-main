@@ -38,12 +38,12 @@ function RegisterPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center px-4 w-full max-w-md">
-      <h1 className="text-3xl font-bold mb-6">Register</h1>
+    <div className="w-full">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Register</h1>
 
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center gap-5 w-full"
+        className="flex flex-col gap-4 sm:gap-5 w-full"
       >
         <FormDataField
           type="text"
@@ -64,19 +64,19 @@ function RegisterPage() {
           handleChange={handleChange}
         />
 
-        <p className={errorMessage ? "text-red-600 select-none" : "text-white"}>
+        <p className={`text-center text-sm ${errorMessage ? "text-red-600 select-none" : "text-white"}`}>
           {errorMessage}
         </p>
 
         <button
           type="submit"
-          className="bg-pink-400 py-2 px-5 text-white rounded-sm hover:bg-pink-600 transition"
+          className="w-full bg-pink-400 py-2 px-5 text-white rounded-lg hover:bg-pink-600 transition"
         >
           Register
         </button>
       </form>
     </div>
-  );
+);
 }
 
 export default RegisterPage;

@@ -69,13 +69,13 @@ function LoginPage() {
     }
 
     return (
-        <main>
-            <h1 className={"text-3xl font-bold mb-6"}>Login</h1>
-            <form className="flex flex-col items-center justify-center gap-6 px-4 w-full max-w-md" onSubmit={(e) => handleSubmit(e)}>
+        <main className="w-full">
+            <h1 className={"text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center"}>Login</h1>
+            <form className="flex flex-col gap-4 sm:gap-6 w-full" onSubmit={(e) => handleSubmit(e)}>
                 <FormDataField type={"email"} id="email" value={user.email} handleChange={(e) => handleChange(e)} />
                 <FormDataField type={"password"} id="password" value={user.password} handleChange={(e) => handleChange(e)} />
-                <p className={`select-none ${errorMessage === "" ? 'text-white' : 'text-red-600'}`}>{errorMessage}</p>
-                <button type="submit" className="font-sans bg-pink-400 py-2 px-5 rounded-xs hover:bg-pink-600 hover:text-white cursor-pointer hover:scale-x-105 transition-all">Login</button>
+                <p className={`select-none text-center text-sm ${errorMessage === "" ? 'text-white' : 'text-red-600'}`}>{errorMessage}</p>
+                <button type="submit" className="w-full font-sans bg-pink-400 py-2 px-5 rounded-lg hover:bg-pink-600 hover:text-white cursor-pointer transition-all">Login</button>
             </form>
         </main>
     );
