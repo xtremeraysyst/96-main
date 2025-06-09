@@ -165,8 +165,8 @@ const IndefiniteEmployeeContract = ({
                 on <HrField value={dateSigned} handleChange={handleChange} id={"dateSigned"} type={"date"}/>.
             </p>
 
-            <div className="flex justify-between mt-8">
-                <div>
+            <div className="mt-8">
+                <div className="mb-8">
                     <p>(signature employer)</p>
                     <p>El Niño BV</p>
                     <p>M.A. Groeneveld</p>
@@ -174,15 +174,12 @@ const IndefiniteEmployeeContract = ({
                     <SignaturePad/>
                 </div>
                 <div>
-                </div>
-                <div>
                     <p>(signature employee)</p>
                     <p>{initials} {lastName}</p>
-                    <div className={"mt-13"}>
+                    <div className={"mt-4"}>
                         <SignaturePad isOpen={false}/>
                     </div>
                 </div>
-
             </div>
         </div>
     );

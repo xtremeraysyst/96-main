@@ -176,11 +176,22 @@ const FixedTermEmployeeContract = ({
 
             <div className="flex justify-between mt-8">
                 <div>
-                    <p>(signature employer)</p>
-                    <p>El Niño BV</p>
-                    <p>M.A. Groeneveld</p>
-                    <p>Director</p>
-                    <SignaturePad/>
+                    <div className="mt-8">
+                        <div className="mb-8">
+                            <p>(signature employer)</p>
+                            <p>El Niño BV</p>
+                            <p>M.A. Groeneveld</p>
+                            <p>Director</p>
+                            <SignaturePad/>
+                        </div>
+                        <div>
+                            <p>(signature employee)</p>
+                            <p>{initials} {lastName}</p>
+                            <div className={"mt-4"}>
+                                <SignaturePad isOpen={false}/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div>
                 </div>

@@ -94,12 +94,14 @@ function CreateContractPage() {
                     <ContractTypeSelect onChange={(contract) => setContractType(contract)}/>
                 </div>
                 
-                {/* Main content area */}
-                <div className="flex flex-col lg:flex-row gap-8 max-w-7xl mx-auto">
+                {/* Contract Preview below the selector */}
+                <div className="mb-8 max-w-md mx-auto">
+                    <ContractPreviewPanel contract={contract} />
+                </div>
+                
+                {/* Main content area - contract form */}
+                <div className="max-w-7xl mx-auto">
                     <div className="flex-1">{contractComponent}</div>
-                    <div className="w-full lg:w-80">
-                        <ContractPreviewPanel contract={contract} />
-                    </div>
                 </div>
             </div>
         </div>
